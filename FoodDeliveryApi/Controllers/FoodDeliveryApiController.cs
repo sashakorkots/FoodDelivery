@@ -9,9 +9,9 @@ namespace FoodDeliveryApi.Controllers
 {
     public class FoodDeliveryController : Controller
     {
-        private FoodDeliveryServices service;
+        private FoodDeliveryService service;
 
-        public FoodDeliveryController(FoodDeliveryServices service)
+        public FoodDeliveryController(FoodDeliveryService service)
         {
             this.service = service;
         }
