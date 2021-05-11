@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using FoodDeliveryApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodDeliveryApi
 {
@@ -26,7 +28,11 @@ namespace FoodDeliveryApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<FoodDeliveryContext>(options =>
+                options
+                    .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+                    .UseSnakeCaseNamingConvention()
+            );
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
